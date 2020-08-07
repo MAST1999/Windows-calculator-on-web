@@ -1,0 +1,337 @@
+/* * and root and other general rules */
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Segoe UI Light";
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+:root {
+  --icon-size: 15px;
+  --icon-div-width: 60px;
+  --icon-div-height: 32.5px;
+  --color-secondary: #e6e6e6;
+  --color-main: #9c9c9c;
+  --color-hover: #777777;
+  --font-main: "Segoe UI Light";
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-main);
+}
+.container.cal-wrapper{
+    height: 100%;
+}
+/* --------------------------------------------------------------- */
+
+/* Top Bar */
+header {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 60px);
+  grid-template-rows: 40px;
+  align-items: center;
+  justify-items: center;
+  background-color: var(--color-main);
+}
+.fa.fa-window-minimize,
+.fa-window-maximize,
+.fa-times {
+  width: 100%;
+  height: 100%;
+  padding-top: 15%;
+  padding-left: 30%;
+}
+.fa-window-minimize:hover,
+.fa-window-maximize:hover,
+.fa-times:hover {
+  background-color: var(--color-hover);
+}
+
+.bar-top {
+  justify-self: start;
+  padding-left: 0.5rem;
+}
+/* --------------------------------------------------------------- */
+
+/* Main */
+#main {
+  margin-top: 2px;
+}
+#main .fa-compress {
+  visibility: hidden;
+}
+#main .fa-expand {
+  visibility: show;
+}
+#number {
+  border: 0px;
+  text-align: right;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  font-size: 5em;
+  background-color: var(--color-main);
+  font-weight: bold;
+}
+.main-buttons button {
+  border: 0px;
+  font-family: var(--font-main);
+  background-color: var(--color-main);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.container.main {
+  display: grid;
+  grid-template-columns: 40px repeat(5, 1fr);
+  grid-template-rows: 40px 20vh;
+  grid-template-areas:
+    "selector standard standard standard . history"
+    "number number number number number number";
+}
+.p-main.standard {
+  padding-left: 2px;
+  grid-area: standard;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "s i";
+}
+.p1 {
+  grid-area: s;
+  align-self: center;
+}
+.pop {
+  justify-self: left;
+  align-self: center;
+  grid-area: i;
+  display: grid;
+  grid-template-columns: 35px;
+  grid-template-rows: 35px;
+}
+.fa-expand:hover {
+  background-color: var(--color-hover);
+}
+.fa-compress {
+  height: 100%;
+  width: 100%;
+  padding-left: 15%;
+  padding-top: 20%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.fa-expand {
+  height: 100%;
+  width: 100%;
+  padding-left: 15%;
+  padding-top: 20%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.fa-clock-o {
+  grid-area: history;
+  justify-self: right;
+  align-self: center;
+  padding: 0.7rem;
+}
+.fa-clock-o:hover {
+  background-color: var(--color-hover);
+}
+.fa-bars {
+  margin-left: 2px;
+  grid-area: selector;
+  padding-left: 24%;
+  padding-top: 29%;
+}
+.fa-bars:hover {
+  background-color: var(--color-hover);
+}
+
+.standard {
+  grid-area: standard;
+  justify-self: start;
+  align-self: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+#number {
+  grid-area: number;
+  justify-self: center;
+  align-self: center;
+}
+
+.container.main-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(45px, 80px));
+  grid-template-rows: 7vh;
+}
+
+.mc,
+.mr,
+.mt {
+  color: #c5c2c2;
+}
+#mmp,
+#mmn,
+#mms {
+  background-color: var(--color-main);
+}
+
+.mp:hover,
+.mn:hover,
+.ms:hover {
+  background-color: var(--color-hover);
+}
+/* ---------------------------------------------------------------- */
+
+/* Numbers and Functions */
+#numbers-functions {
+  height: 100%;
+}
+.numbers:hover {
+  background-color: var(--color-hover);
+}
+.functions:hover {
+  background-color: var(--color-hover);
+}
+p var,
+p sup,
+p sub,
+p span {
+  background-color: inherit;
+}
+.container.numbers-functions {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(45px, 1fr));
+  grid-template-rows: repeat(6, minmax(45px, 1fr));
+  grid-template-areas:
+    "percent root-x square-x one-divided-x"
+    "ce c delete division-sign"
+    "seven eight nine multiplication-sign"
+    "four five six minus-sign"
+    "one two three plus-sign"
+    "plus-minus zero dot equal-sign";
+  gap: 2px;
+}
+.delete span {
+  color: #3a3636;
+}
+.numbers,
+.functions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.functions {
+  background-color: #d0d0d0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.numbers {
+  background-color: var(--color-secondary);
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.n1 {
+  grid-area: one;
+}
+.n2 {
+  grid-area: two;
+}
+.n3 {
+  grid-area: three;
+}
+.n4 {
+  grid-area: four;
+}
+.n5 {
+  grid-area: five;
+}
+.n6 {
+  grid-area: six;
+}
+.n7 {
+  grid-area: seven;
+}
+.n8 {
+  grid-area: eight;
+}
+.n9 {
+  grid-area: nine;
+}
+.n0 {
+  grid-area: zero;
+}
+.root-x {
+  grid-area: root-x;
+}
+.square-x {
+  grid-area: square-x;
+}
+.triangle-x {
+  grid-area: square-x;
+  visibility: hidden;
+}
+.equal-sign {
+  grid-area: equal-sign;
+}
+.dot {
+  grid-area: dot;
+}
+.percent {
+  grid-area: percent;
+}
+.one-divided-x {
+  grid-area: one-divided-x;
+}
+.ce {
+  grid-area: ce;
+}
+.c {
+  grid-area: c;
+}
+.delete {
+  grid-area: delete;
+}
+.plus-minus {
+  grid-area: plus-minus;
+}
+.plus-sign {
+  grid-area: plus-sign;
+}
+.division-sign {
+  grid-area: division-sign;
+}
+.multiplication-sign {
+  grid-area: multiplication-sign;
+}
+.minus-sign {
+  grid-area: minus-sign;
+}
+/* ------------------------------------------------------------- */
+
+@media only screen and (min-width: 551px) {
+  
+  .container.history-wrapper {
+    visibility: show;
+    grid-area: his;
+  }
+  .container.cal-wrapper {
+    grid-area: cal;
+  }
+  .container.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    grid-template-rows: 1fr;
+    grid-template-areas: "cal his";
+  }
+}
