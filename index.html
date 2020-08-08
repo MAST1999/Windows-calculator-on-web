@@ -7,91 +7,46 @@
     <title>Calculator</title>
   </head>
   <body>
-    <div class="container wrapper">
-      <!-- Top Bar -->
-      <header id="top-bar">
-        <p class="text bar-top">Calculator</p>
-        <i class="fa fa-window-minimize" aria-hidden="true"></i>
-        <i class="fa fa-window-maximize" aria-hidden="true"></i>
-        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
-      </header>
-      <!-- ---------------------------------------------------------------- -->
+    <!-- The Whole Calculator -->
+    <div class="container wrapper-all">
+      <!-- This is for the purpose of history and memory side which 
+        won't be present in smaller screen sizes -->
 
-      <!-- Main -->
-      <section id="main">
-        <div class="container main">
-          <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-          <div class="p-main standard">
-            <p class="p1">Standard</p>
-            <div class="pop">
-              <i class="fa fa-compress fa-lg" aria-hidden="true"></i>
-              <i class="fa fa-expand fa-lg" aria-hidden="true"></i>
-            </div>
-          </div>
-          <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
-          <input
-            type="text"
-            name="number"
-            id="number"
-            class="numberz"
-            value="0"
-          />
+      <!-- Header -->
+      <div class="container wrapper-header">
+        <div class="name"><p>Calculator</p></div>
+        <div class="top-bar minimize"><p>&#128469;</p></div>
+        <div class="top-bar maximize"><p>&#x1F5D6;</p></div>
+        <div class="top-bar close"><p>&#10005;</p></div>
+      </div>
+      <!-- Main Part -->
+      <div class="container wrapper-main">
+        <div class="main bars">
+          <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
-        <div class="container main-buttons">
-          <button id="mmp" class="m mc">MC</button>
-          <button id="mmn" class="m mr">MR</button>
-          <button class="m mp">M+</button>
-          <button class="m mn">M-</button>
-          <button class="m ms">MS</button>
-          <button id="mms" class="m mt">M^</button>
+        <div class="main standard">
+          <p>Standard</p>
         </div>
-      </section>
-      <!-- ---------------------------------------------------------------- -->
+        <div class="main pop">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </div>
+        <div class="main history">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+        </div>
+        <div class="main number">
+          <input class="number" type="text">
+        </div>
+        <div class="main mc"><span>MC</span></div>
+        <div class="main m"><span>MR</span></div>
+        <div class="main m"><span>M+</span></div>
+        <div class="main m"><span>M-</span></div>
+        <div class="main m"><span>MS</span></div>
+        <div class="main m"><span>M<sup>&#9663;</sup></span></div>
+      </div>
 
-      <!-- Numbers And Functions -->
-      <section id="numbers-functions">
-        <div class="container numbers-functions">
-          <p class="numbers n1">1</p>
-          <p class="numbers n2">2</p>
-          <p class="numbers n3">3</p>
-          <p class="numbers n4">4</p>
-          <p class="numbers n5">5</p>
-          <p class="numbers n6">6</p>
-          <p class="numbers n7">7</p>
-          <p class="numbers n8">8</p>
-          <p class="numbers n9">9</p>
-          <p class="numbers n0">0</p>
-
-          <p class="functions root-x">
-            <var><sup>2</sup><span>&#8730;</span>x</var>
-          </p>
-          <p class="functions square-x">
-            <var>x <sup>2</sup></var>
-          </p>
-          <p class="functions triangle-x">
-            <var>x <sup>3</sup></var>
-          </p>
-          <p class="functions percent"><var>%</var></p>
-          <p class="functions one-divided-x">
-            <var><sup>1</sup>/<sub>x</sub></var>
-          </p>
-          <p class="functions plus-minus">
-            <var><sup class="bigger">+</sup>/<sub class="bigger">-</sub></var>
-          </p>
-          <p class="functions ce">CE</p>
-          <p class="functions c">C</p>
-          <p class="functions delete"><span>&#10152;</span></p>
-          <p class="functions division-sign"><span>&#247;</span></p>
-          <p class="functions multiplication-sign"><span>&#215;</span></p>
-          <p class="functions minus-sign"><span>&#8722;</span></p>
-          <p class="functions plus-sign"><span>&#43;</span></p>
-          <p class="functions equal-sign"><span>&#61;</span></p>
-          <p class="functions dot">.</p>
-        </div>
-      </section>
-      <!-- ---------------------------------------------------------------- -->
+      <!-- History And Memory -->
+      <div class="container wrapper-history-memory"></div>
     </div>
-    
     <!-- Font Awesome Icons -->
     <script src="https://use.fontawesome.com/32f6a46d51.js"></script>
   </body>
