@@ -1,25 +1,53 @@
 /* * and root and other general rules */
+/* ---------------------------------------------------------- */
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
+html,
 body {
   height: 100%;
   background-color: var(--bcd);
 }
 :root {
   /* Background Color Dark*/
-  --bcd: #aaaaaa;
+  --bcd: #cecece;
   /* Background Color Light */
-  --bcl: #d4d4d4;
+  --bcl: #dfdfdf;
   /* Disabled Color */
   --dc: #797979;
   /* Hover Color */
   --hc: #616161;
 }
-/* ---------------------------------------------------- */
+.wrapper-all {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 35px 21vh 1fr 0px;
+  grid-template-areas:
+    "header"
+    "main"
+    "main"
+    "numbers"
+    "history";
+}
+/* Grid area Names */
+.wrapper-header {
+  grid-area: header;
+}
+.wrapper-main {
+  grid-area: main;
+}
+.wrapper-num-fun {
+  grid-area: numbers;
+}
+/* .wrapper-history */
 
+/* ============================================================ */
+
+/* Header */
+/* ------------------------------------------------------------ */
 .container.wrapper-header {
   display: grid;
   grid-template-columns: 1fr repeat(3, 50px);
@@ -27,20 +55,165 @@ body {
 }
 .wrapper-header p {
   text-align: center;
-  padding-top: 8px; 
+  padding-top: 8px;
 }
-.name p{
-  font-family: sans-serif ;
+.name p {
+  font-family: sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
   text-align: left;
 }
-.top-bar p{
+.top-bar p {
   font-size: 1rem;
   font-weight: 500;
 }
-.top-bar:hover {
+.top-bar.close:hover {
   background-color: rgb(253, 40, 40);
   color: white;
+}
+.top-bar.minimize:hover,
+.top-bar.maximize:hover {
+  background-color: var(--hc);
+}
+/* ============================================================ */
+
+/* Main */
+/* ------------------------------------------------------------ */
+/* Main grid Defined */
+.container.wrapper-main {
+  display: grid;
+  grid-template-columns: 40px 70px 1fr 40px;
+  grid-template-rows: 35px 15vh 6vh;
+  grid-template-areas:
+    "bars standard pop history"
+    "input input input input"
+    "m m m m";
+}
+/* Grid areas defined and set to stay in the center */
+.main.bars,
+.main.history {
+  text-align: center;
+  padding-top: 20%;
+}
+.main.bars {
+  grid-area: bars;
+  /* justify-self: center; */
+  /* align-self: center; */
+}
+.main.standard {
+  grid-area: standard;
+  text-align: left;
+  padding-left: 5px;
+  /* justify-self: left; */
+  /* align-self: center; */
+}
+.main.standard p {
+  padding-top: 9px;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.fa-sign-out {
+  padding-left: 2px;
+}
+.main.history {
+  grid-area: history;
+  /* justify-self: center; */
+  /* align-self: center; */
+}
+.main.number {
+  grid-area: input;
+  padding-right: 3px;
+}
+.main.m {
+  grid-area: m;
+}
+.main.pop {
+  grid-area: pop;
+  text-align: left;
+  padding-top: 10px;
+  width: 40px;
+  height: 40px;
+  margin-left: 30px;
+  padding-left: 10px;
+}
+/* .................... */
+/* Applying no effects fot input and the required font size */
+.main.number input {
+  background-color: var(--bcd);
+  border: none;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  font-size: 3rem;
+}
+/* .................... */
+/* The part for M's has different grid behavior and will need a different grid */
+.main.m {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(30px, 80px));
+}
+.main-m {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-m.mt {
+  padding-bottom: 13%;
+}
+
+/* .................... */
+/* Set hover for items in Main */
+.bars:hover,
+.pop:hover,
+.history:hover,
+.mp:hover,
+.mm:hover,
+.ms:hover {
+  background-color: var(--hc);
+}
+/* .................... */
+/* Disabled M's in calculator */
+.mc,
+.mr,
+.mt {
+  color: var(--dc);
+}
+/* ============================================================ */
+
+/* Numbers and Functions */
+/* ------------------------------------------------------------ */
+/* Making a grid for numbers and functions */
+.wrapper-num-fun {
+  margin-top: 3px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 2px;
+}
+/* .................... */
+/* Setting up the divs for hover and centering the content */
+.functions,
+.numbers {
+  display: flex;
+}
+.functions,
+.numbers {
+  justify-content: center;
+  align-items: center;
+}
+.wrapper-num-fun > div:hover {
+  background-color: var(--hc);
+}
+.bigger {
+  font-size: 1.3rem;
+}
+/* .................... */
+/* Setting a different color for functions and numbers */
+.functions {
+  background-color: var(--bcl);
+}
+.numbers {
+  background-color: white;
 }
