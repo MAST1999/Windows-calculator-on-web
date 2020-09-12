@@ -1,327 +1,52 @@
-/* * and root and other general rules */
-/* ---------------------------------------------------------- */
+/* general things */
 * {
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
+  margin: 0px;
 }
-html,
-body {
-  height: 100%;
-  background-color: var(--bcd);
+html,body,#wrapperAll {
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
+  margin: 0px;
 }
-:root {
-  /* Background Color Dark*/
-  --bcd: #c0c0c0;
-  /* Background Color Light */
-  --bcl: #eeeeee;
-  /* Disabled Color */
-  --dc: #797979;
-  /* Hover Color */
-  --hc: #c0c0c0;
-}
-/* Setting up the whole calculator */
-.wrapper-all {
-  height: 100%;
+/* setting up the grid for the whole calculator */
+#wrapperAll {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 40px 35px 21vh 1fr 0px;
-  grid-template-areas:
-    "header"
-    "main"
-    "main"
-    "numbers"
-    "history";
+  grid-template-columns: 1fr 240px;
+  grid-template-rows: 30px minmax(100px, 225px) 1fr;
+  grid-template-areas: 
+  "header header"
+  "infoPanel historyMemory"
+  "controlPanel historyMemory" ;
 }
-/* Grid area Names */
-.wrapper-header {
+#header {
   grid-area: header;
 }
-.wrapper-main {
-  grid-area: main;
+#infoPanel {
+  grid-area: infoPanel;
 }
-.wrapper-num-fun {
-  grid-area: numbers;
+#controlPanel {
+  grid-area: controlPanel;
 }
-/* .wrapper-history */
-.wrapper-history-memory {
-  grid-area: history;
+#historyMemory {
+  grid-area: historyMemory;
 }
-
-/* ============================================================ */
-
-/* Header */
-/* ------------------------------------------------------------ */
-.container.wrapper-header {
+/* Fixing up the Header */
+#header {
   display: grid;
-  grid-template-columns: 1fr repeat(3, 50px);
-  grid-template-rows: 40px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
 }
-.wrapper-header p {
-  text-align: center;
-  padding-top: 8px;
+#topOptions {
+  justify-self: end;
+  display:flex;
 }
-.name p {
-  font-family: sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  padding-left: 0.5rem;
-  text-align: left;
+.option {
+  padding: 0px 17px;
 }
-.top-bar p {
-  font-size: 1rem;
-  font-weight: 500;
-}
-.top-bar.close:hover {
-  background-color: rgb(253, 40, 40);
-  color: white;
-}
-.top-bar.minimize:hover,
-.top-bar.maximize:hover {
-  background-color: #acacac;
-}
-/* ============================================================ */
-
-/* Main */
-/* ------------------------------------------------------------ */
-/* Main grid Defined */
-.container.wrapper-main {
-  display: grid;
-  grid-template-columns: 40px 90px 40px 1fr 40px;
-  grid-template-rows: 35px minmax(50px, 15vh) 6vh;
-  grid-template-areas:
-    "bars standard pop . history"
-    "input input input input input"
-    "m m m m m";
-}
-/* Grid areas defined and set to stay in the center */
-
-.main.bars {
-  grid-area: bars;
-}
-.main.standard {
-  grid-area: standard;
-}
-.main.standard p {
-  font-family: sans-serif;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-.main.history {
-  grid-area: history;
-}
-.main.number {
-  grid-area: input;
-  padding-right: 3px;
-}
-.m {
-  grid-area: m;
-}
-.main.pop {
-  grid-area: pop;
-}
-
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* .................... */
-/* Applying no effects fot input and the required font size */
-.main.number input {
-  margin-top: 5px;
-  background-color: var(--bcd);
-  border: none;
-  outline: none;
-  width: 100%;
+.op {
   height: 100%;
-  text-align: right;
-  font-size: 3rem;
-}
-/* .................... */
-/* The part for M's has different grid behavior and will need a different grid */
-.m {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(30px, 80px));
-  grid-template-rows: 6vh;
-}
-.main-m {
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-.main-m.mt {
-  padding-bottom: 8px;
-}
-
-/* .................... */
-/* Set hover for items in Main */
-.bars:hover,
-.pop:hover,
-.history:hover,
-.mp:hover,
-.mm:hover,
-.ms:hover {
-  background-color: var(--hc);
-}
-/* .................... */
-/* Disabled M's in calculator */
-.mc,
-.mr,
-.mt {
-  color: var(--dc);
-}
-/* ============================================================ */
-
-/* Numbers and Functions */
-/* ------------------------------------------------------------ */
-/* Making a grid for numbers and functions */
-.wrapper-num-fun {
-  margin-top: 3px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(70px, 1fr));
-  grid-template-rows: repeat(6, minmax(40px, 1fr)) 0px;
-  gap: 2px;
-}
-.rectangle-x {
-  padding-top: 10px;
-}
-/* .................... */
-/* Setting up the divs for hover and centering the content */
-.functions,
-.numbers {
-  display: flex;
-}
-.functions,
-.numbers {
   justify-content: center;
-  align-items: center;
-}
-.wrapper-num-fun > div:hover {
-  background-color: var(--hc);
-}
-.bigger {
-  font-size: 1.3rem;
-}
-/* .................... */
-/* Setting a different color for functions and numbers */
-.functions {
-  background-color: var(--bcl);
-}
-.numbers {
-  background-color: white;
-}
-/* ============================================================ */
-
-/* Setting up the max width of 480 */
-@media only screen and (max-width: 480px) {
-  body {
-    min-width: 240px;
-    min-height: 500px;
-  }
-}
-@media only screen and (min-width: 481px) and (max-width: 499px) {
-  body,
-  html {
-    min-height: 500px;
-  }
-  .m {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(30px, 80px)) 1fr;
-    grid-template-rows: 6vh;
-  }
-  .main-m.mt {
-    justify-self: right;
-    align-self: center;
-    padding-bottom: 8px;
-    padding-right: 5px;
-  }
-}
-@media only screen and (min-width: 500px) {
-  .wrapper-all {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    grid-template-rows: 40px 35px 21vh 1fr;
-    grid-template-areas:
-      "header header"
-      "main history"
-      "main history"
-      "numbers history";
-  }
-  .wrapper-history-memory {
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .history-m {
-    font-family: sans-serif;
-    border-bottom: solid orange 2px;
-    padding-bottom: 3px;
-  }
-  .history {
-    visibility: hidden;
-  }
-  .m {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(30px, 80px));
-    grid-template-rows: 6vh;
-  }
-  .main-m {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .main-m.mt {
-    justify-self: center;
-    align-self: center;
-    padding-right: 0px;
-    margin: 0px;
-    visibility: hidden;
-  }
-}
-@media only screen and (min-width: 800px) {
-  .numbers p,
-  .functions p {
-    font-size: 1.4rem;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  .wrapper-num-fun {
-    margin-top: 3px;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(70px, 1fr));
-    grid-template-rows: repeat(5, minmax(40px, 1fr));
-    gap: 2px;
-    grid-template-areas:
-      "percent ce c delete division"
-      "root-x n7 n8 n9 multiplication"
-      "squared-x n4 n5 n6 minus"
-      "rectangle-x n1 n2 n3 plus"
-      "one-divided-x plus-divided-minus n0 dot equals";
-  }
-  .rectangle-x {
-    padding-top: 0px;
-  }
-  .percent {
-    grid-area: percent;
-  }
-  .division-sign {
-    grid-area: division;
-  }
-  .one-divided-x {
-    grid-area: one-divided-x;
-  }
-  .squared-x {
-    grid-area: root-x;
-  }
-  .x-squared {
-    grid-area: squared-x;
-  }
-  .rectangle-x {
-    grid-area: rectangle-x;
-  }
-  .one-divided-x {
-    grid-area: one-divided-x;
-  }
 }
