@@ -47,6 +47,7 @@ body {
 /* .wrapper-history */
 .wrapper-history-memory {
   grid-area: history;
+  padding-top: 5px;
 }
 
 /* ============================================================ */
@@ -163,7 +164,7 @@ body {
 .mp:hover,
 .mm:hover,
 .ms:hover {
-  background-color: var(--hc);
+  background-color: var(--dc);
 }
 /* .................... */
 /* Disabled M's in calculator */
