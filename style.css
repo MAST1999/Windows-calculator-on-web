@@ -12,10 +12,10 @@ body {
   overflow: hidden;
 }
 :root {
-  /* Background Color Dark*/
+ /* Background Color Dark*/
   --bcd: #c0c0c0;
   /* Background Color Light */
-  --bcl: #eeeeee;
+  --bcl: #dddddd;
   /* Disabled Color */
   --dc: #797979;
   /* Hover Color */
@@ -26,7 +26,7 @@ body {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 40px 35px 21vh 1fr 0px;
+  grid-template-rows: 40px 35px 23vh 1fr 0px;
   grid-template-areas:
     "header"
     "main"
@@ -90,7 +90,7 @@ body {
 .container.wrapper-main {
   display: grid;
   grid-template-columns: 40px 90px 40px 1fr 40px;
-  grid-template-rows: 35px minmax(50px, 15vh) 6vh;
+  grid-template-rows: 35px minmax(50px, 16vh) 6vh;
   grid-template-areas:
     "bars standard pop . history"
     "input input input input input"
@@ -128,9 +128,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+.main.number {
+  flex-direction: column;
+}
 /* .................... */
-/* Applying no effects fot input and the required font size */
-.main.number input {
+/* Applying no effects fot input and the required font size and the holder*/
+.main.number div {
   margin-top: 5px;
   background-color: var(--bcd);
   border: none;
@@ -139,6 +142,14 @@ body {
   height: 100%;
   text-align: right;
   font-size: 3rem;
+  vertical-align: middle;
+}
+#holder {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 25px;
+  font-size: 16px;
 }
 /* .................... */
 /* The part for M's has different grid behavior and will need a different grid */
@@ -199,7 +210,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.wrapper-num-fun > div:hover {
+.wrapper-num-fun > button:hover {
   background-color: var(--hc);
 }
 .bigger {
@@ -209,9 +220,11 @@ body {
 /* Setting a different color for functions and numbers */
 .functions {
   background-color: var(--bcl);
+  border: none;
 }
 .numbers {
   background-color: white;
+  border: none;
 }
 /* ============================================================ */
 
@@ -244,7 +257,7 @@ body {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 200px;
-    grid-template-rows: 40px 35px 21vh 1fr;
+    grid-template-rows: 40px 35px 23vh 1fr;
     grid-template-areas:
       "header header"
       "main history"
@@ -324,5 +337,8 @@ body {
   }
   .one-divided-x {
     grid-area: one-divided-x;
+  }
+  .main.number div {
+    font-size: 4.25rem;
   }
 }
