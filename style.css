@@ -256,8 +256,8 @@ body {
   .wrapper-all {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 200px;
-    grid-template-rows: 40px 35px 23vh 1fr;
+    grid-template-columns: 1fr minmax(200px, 320px);
+    grid-template-rows: 40px 35px 23vh minmax(200px, 420px);
     grid-template-areas:
       "header header"
       "main history"
