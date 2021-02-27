@@ -13,13 +13,13 @@ body {
 }
 :root {
  /* Background Color Dark*/
-  --bcd: #c0c0c0;
+  --bcd: rgb(243,243,243);
   /* Background Color Light */
-  --bcl: #dddddd;
+  --bcl: rgb(249,249,249);
   /* Disabled Color */
-  --dc: #797979;
+  --dc: rgb(190,190,190);
   /* Hover Color */
-  --hc: #c0c0c0;
+  --hc: rgb(224,224,224);
 }
 /* Setting up the whole calculator */
 .wrapper-all {
