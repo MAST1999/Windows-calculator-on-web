@@ -69,11 +69,15 @@
         <button class="functions squared-x">
           <p><sup>2</sup>&Sqrt;x</p>
         </button>
-        <button class="functions division-sign functionShowAble"><p>&div;</p></button>
+        <button class="functions division-sign functionShowAble">
+          <p>&div;</p>
+        </button>
         <button class="numbers n7"><p>7</p></button>
         <button class="numbers n8"><p>8</p></button>
         <button class="numbers n9"><p>9</p></button>
-        <button class="functions multiplication-sign functionShowAble"><p>&times;</p></button>
+        <button class="functions multiplication-sign functionShowAble">
+          <p>&times;</p>
+        </button>
         <button class="numbers n4"><p>4</p></button>
         <button class="numbers n5"><p>5</p></button>
         <button class="numbers n6"><p>6</p></button>
@@ -81,7 +85,9 @@
         <button class="numbers n1"><p>1</p></button>
         <button class="numbers n2"><p>2</p></button>
         <button class="numbers n3"><p>3</p></button>
-        <button class="functions plus-sign functionShowAble"><p>&plus;</p></button>
+        <button class="functions plus-sign functionShowAble">
+          <p>+</p>
+        </button>
         <button class="functions plus-minus">
           <p><sup>&plus;</sup>&#x2215;<sub>&minus;</sub></p>
         </button>
@@ -96,17 +102,22 @@
 
       <!-- History And Memory -->
       <div class="container wrapper-history-memory">
-        <div class="container">
-          <p class="history-m">History</p>
+        <div class="container-history-memory">
+          <div class="container">
+            <p class="history-m">History</p>
+          </div>
+          <div class="container">
+            <p class="memory">Memory</p>
+          </div>
         </div>
-        <div class="container">
-          <p class="memory">Memory</p>
+        <div class="history-memory-show">
+          <ul id="history-memory-show"></ul>
         </div>
       </div>
     </div>
     <!-- -------------------------------------------------------- -->
     <!-- Font Awesome Icons -->
     <script src="https://use.fontawesome.com/32f6a46d51.js"></script>
-    <script src="javaScript.js"></script>
+    <script type="module" src="./javaScript.js"></script>
   </body>
 </html>
