@@ -1,0 +1,13 @@
+{
+  "name": "Windows-calculator-on-web",
+  "version": "1.0.0",
+  "description": "Calculator",
+  "main": "index.js",
+  "repository": "https://github.com/MAST1999/Windows-calculator-on-web.git",
+  "author": "Muhammad Amin Saffari Taheri <ma.saffaritaheri@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "eslint": "^7.23.0"
+  }
+}

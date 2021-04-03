@@ -8,12 +8,12 @@
   </head>
   <body>
     <!-- The Whole Calculator -->
-    <div class="container wrapper-all">
+    <div class="container noSelect wrapper-all">
       <!-- This is for the purpose of history and memory side which 
         won't be present in smaller screen sizes -->
 
       <!-- Header -->
-      <div class="container wrapper-header">
+      <div class="container noSelect wrapper-header">
         <div class="name"><p>Calculator</p></div>
         <div class="top-bar minimize"><p>&#128469;</p></div>
         <div class="top-bar maximize"><p>&#x1F5D6;</p></div>
@@ -22,7 +22,7 @@
       <!-- -------------------------------------------------------- -->
 
       <!-- Main Part -->
-      <div class="container wrapper-main">
+      <div class="container noSelect wrapper-main">
         <div class="main bars">
           <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
         </div>
@@ -40,20 +40,17 @@
           <div id="numbers-results" class="number">0</div>
         </div>
         <div class="m">
-          <div class="main-m mc"><span>MC</span></div>
-          <div class="main-m mr"><span>MR</span></div>
-          <div class="main-m mp"><span>M+</span></div>
-          <div class="main-m mm"><span>M&minus;</span></div>
-          <div class="main-m ms"><span>MS</span></div>
-          <div class="main-m mt">
-            <span>M<sup>&#9663;</sup></span>
-          </div>
+          <div class="main-m md" id="mc">MC</div>
+          <div class="main-m md" id="mr">MR</div>
+          <div class="main-m mh" id="mp">M+</div>
+          <div class="main-m mh" id="mm">M&minus;</div>
+          <div class="main-m mh" id="ms">MS</div>
         </div>
       </div>
       <!-- -------------------------------------------------------- -->
 
       <!-- Numbers and Functions -->
-      <div class="container wrapper-num-fun">
+      <div class="container noSelect wrapper-num-fun">
         <button class="functions percent"><p>&percnt;</p></button>
         <button class="functions ce"><p>CE</p></button>
         <button class="functions c"><p>C</p></button>
@@ -86,7 +83,7 @@
         <button class="numbers n2"><p>2</p></button>
         <button class="numbers n3"><p>3</p></button>
         <button class="functions plus-sign functionShowAble">
-          <p>&plus;</p>
+          <p>+</p>
         </button>
         <button class="functions plus-minus">
           <p><sup>&plus;</sup>&#x2215;<sub>&minus;</sub></p>
@@ -101,18 +98,23 @@
       <!-- -------------------------------------------------------- -->
 
       <!-- History And Memory -->
-      <div class="container wrapper-history-memory">
-        <div class="container">
-          <p class="history-m">History</p>
+      <div class="container noSelect wrapper-history-memory">
+        <div class="container container-history-memory">
+          <div class="container noSelect">
+            <p class="history-m">History</p>
+          </div>
+          <div class="container noSelect">
+            <p class="memory">Memory</p>
+          </div>
         </div>
-        <div class="container">
-          <p class="memory">Memory</p>
+        <div class="history-memory-show">
+          <ul id="history-memory-show"></ul>
         </div>
       </div>
     </div>
     <!-- -------------------------------------------------------- -->
     <!-- Font Awesome Icons -->
     <script src="https://use.fontawesome.com/32f6a46d51.js"></script>
-    <script src="javaScript.js"></script>
+    <script type="module" src="./javaScript.js"></script>
   </body>
 </html>
