@@ -49,6 +49,15 @@ body {
   grid-area: history;
   padding-top: 5px;
 }
+.noSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 
 /* ============================================================ */
 
@@ -172,16 +181,12 @@ body {
 .bars:hover,
 .pop:hover,
 .history:hover,
-.mp:hover,
-.mm:hover,
-.ms:hover {
+.mh:hover {
   background-color: var(--dc);
 }
 /* .................... */
 /* Disabled M's in calculator */
-.mc,
-.mr,
-.mt {
+.md {
   color: var(--dc);
 }
 /* ============================================================ */
@@ -278,12 +283,19 @@ body {
   }
   .history-m {
     font-family: sans-serif;
-    border-bottom: solid orange 2px;
     padding-bottom: 3px;
     cursor: pointer;
   }
+  .selectedBorder {
+    border-bottom: solid orange 2px;
+  }
   .memory {
     cursor: pointer;
+    padding-bottom: 3px;
+    font-family: sans-serif;
+  }
+  .list-style {
+    list-style: none;
   }
   .history {
     visibility: hidden;

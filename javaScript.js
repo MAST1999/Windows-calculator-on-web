@@ -10,32 +10,34 @@ import numberCubed from "./functions/numberCubed.js";
 import root from "./functions/root.js";
 import decimal from "./functions/decimal.js";
 import percent from "./functions/percent.js";
+import showHistory from "./functions/showHistory.js";
+import showMemory from "./functions/showMemory.js";
+import memoryHandler from "./functions/memoryHandler.js";
 
 let numbers = [];
 let actions = [];
 let changedNumbers = true; //This is for determining whether user has intentionally pressed zero and wants to use it
 let done = false;
 let history = [];
+let memory = [];
+let currentShowHistory = true;
+
+showHistory(history);
 
 const calculateIt = () => {
   if (numbers.length < 1 || actions.length < 1) return;
-  [numbers, actions, changedNumbers, done, history] = calculate(
+  calculate(
     numbers,
     actions,
     changedNumbers,
     done,
-    history
+    history,
+    currentShowHistory
   );
 };
 
 const addNumberIt = (Event) => {
-  [done, numbers, actions, changedNumbers] = addNumber(
-    Event,
-    done,
-    numbers,
-    actions,
-    changedNumbers
-  );
+  addNumber(Event, done, numbers, actions, changedNumbers);
 };
 
 const removerIt = () => {
@@ -43,17 +45,11 @@ const removerIt = () => {
 };
 
 const addFunctionShowAbleIt = (Event) => {
-  [changedNumbers, numbers, actions, done] = functionShowAble(
-    Event,
-    changedNumbers,
-    numbers,
-    actions,
-    done
-  );
+  functionShowAble(Event, changedNumbers, numbers, actions, done);
 };
 
 const resetCIt = () => {
-  [numbers, actions, done] = resetC(numbers, actions, done);
+  resetC(numbers, actions, done);
 };
 const resetCEIt = () => {
   if (done) resetCIt();
@@ -66,11 +62,22 @@ const percentIt = () => {
     document.getElementById("holder").textContent = "0";
     return;
   }
-  [actions, numbers, changedNumbers] = percent(
-    actions,
-    numbers,
-    changedNumbers
-  );
+  percent(actions, numbers, changedNumbers);
+};
+
+const showHistoryIt = () => {
+  currentShowHistory = true;
+  showHistory(history);
+};
+
+const showMemoryIt = () => {
+  currentShowHistory = false;
+  showMemory(memory);
+};
+
+const memoryHandlerIt = (Event) => {
+  memoryHandler(Event, memory, changedNumbers, done);
+  if (!currentShowHistory) showMemoryIt();
 };
 
 (function addingEventListeners() {
@@ -113,4 +120,14 @@ const percentIt = () => {
   document
     .getElementsByClassName("percent")[0]
     .addEventListener("click", percentIt, false);
+  document
+    .getElementsByClassName("history-m")[0]
+    .addEventListener("click", showHistoryIt, false);
+  document
+    .getElementsByClassName("memory")[0]
+    .addEventListener("click", showMemoryIt, false);
+  const ms = document.querySelectorAll(".main-m");
+  ms.forEach((m) => {
+    m.addEventListener("click", memoryHandlerIt, false);
+  });
 })();

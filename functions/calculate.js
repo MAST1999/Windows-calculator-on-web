@@ -1,4 +1,11 @@
-const calculate = (numbers, actions, changedNumbers, done, history) => {
+const calculate = (
+  numbers,
+  actions,
+  changedNumbers,
+  done,
+  history,
+  currentShowHistory
+) => {
   const historyMemoryShow = document.getElementsByClassName(
     "history-memory-show"
   )[0];
@@ -55,15 +62,16 @@ const calculate = (numbers, actions, changedNumbers, done, history) => {
     document.getElementById("numbers-results").textContent;
   history.push(li);
   let lastChild = ul.lastElementChild;
-  while (lastChild) {
-    ul.removeChild(lastChild);
-    lastChild = ul.lastElementChild;
+  console.log();
+  if (currentShowHistory) {
+    while (lastChild) {
+      ul.removeChild(lastChild);
+      lastChild = ul.lastElementChild;
+    }
+    history.forEach((history) => {
+      ul.appendChild(history);
+    });
   }
-  history.forEach((history) => {
-    ul.appendChild(history);
-  });
-
-  return [numbers, actions, changedNumbers, done, history];
 };
 
 export default calculate;
