@@ -22,6 +22,8 @@ let history = [];
 let memory = [];
 let currentShowHistory = true;
 
+console.log({ "done is": done });
+
 showHistory(history);
 
 const calculateIt = () => {
@@ -34,9 +36,11 @@ const calculateIt = () => {
     history,
     currentShowHistory
   );
+  done = true;
 };
 
 const addNumberIt = (Event) => {
+  console.log(done);
   addNumber(Event, done, numbers, actions, changedNumbers);
 };
 

@@ -33,7 +33,7 @@ const addFunctionShowAble = (Event, changedNumbers, numbers, actions, done) => {
     document.getElementById("holder").textContent += functionShow;
     done = false;
   }
-  return [changedNumbers, numbers, actions, done];
+  return;
 };
 
 export default addFunctionShowAble;

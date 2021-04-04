@@ -1,5 +1,7 @@
 const addNumber = (Event, done, numbers, actions, changedNumbers) => {
+  console.log(done);
   if (done) {
+    console.log("here");
     document.getElementById("numbers-results").textContent = "0";
     document.getElementById("holder").textContent = "";
     numbers = [];
@@ -14,10 +16,11 @@ const addNumber = (Event, done, numbers, actions, changedNumbers) => {
   } else {
     document.getElementById("numbers-results").textContent +=
       btnNumber.textContent;
+    // eslint-disable-next-line no-unused-vars
     changedNumbers = true;
   }
 
-  return [done, numbers, actions, changedNumbers];
+  return;
 };
 
 export default addNumber;

@@ -72,6 +72,7 @@ const calculate = (
       ul.appendChild(history);
     });
   }
+  return;
 };
 
 export default calculate;
