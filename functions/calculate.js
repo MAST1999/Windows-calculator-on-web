@@ -60,6 +60,7 @@ const calculate = (
     document.getElementById("holder").textContent +
     " " +
     document.getElementById("numbers-results").textContent;
+  li.classList.add("list-style");
   history.push(li);
   let lastChild = ul.lastElementChild;
   console.log();
