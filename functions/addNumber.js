@@ -1,7 +1,6 @@
 const addNumber = (Event, done, numbers, actions, changedNumbers) => {
   console.log(done);
   if (done) {
-    console.log("here");
     document.getElementById("numbers-results").textContent = "0";
     document.getElementById("holder").textContent = "";
     numbers = [];

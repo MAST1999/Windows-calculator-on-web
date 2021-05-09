@@ -42,6 +42,8 @@ const calculateIt = () => {
 const addNumberIt = (Event) => {
   console.log(done);
   addNumber(Event, done, numbers, actions, changedNumbers);
+  done = false;
+  changedNumbers = true;
 };
 
 const removerIt = () => {

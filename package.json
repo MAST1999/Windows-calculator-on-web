@@ -9,5 +9,8 @@
   "private": false,
   "devDependencies": {
     "eslint": "^7.23.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

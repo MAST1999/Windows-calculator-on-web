@@ -6,11 +6,6 @@ const calculate = (
   history,
   currentShowHistory
 ) => {
-  const historyMemoryShow = document.getElementsByClassName(
-    "history-memory-show"
-  )[0];
-  console.log(historyMemoryShow);
-
   if (changedNumbers) {
     document.getElementById("holder").textContent +=
       " " + document.getElementById("numbers-results").textContent;
@@ -21,7 +16,7 @@ const calculate = (
     document.getElementById("numbers-results").textContent = "0";
     changedNumbers = false;
   } else {
-    return [numbers, actions, changedNumbers, done, history];
+    return;
   }
   if (numbers.length < 2) return;
   while (numbers.length > 1) {
@@ -63,7 +58,7 @@ const calculate = (
   li.classList.add("list-style");
   history.push(li);
   let lastChild = ul.lastElementChild;
-  console.log();
+  console.log(done);
   if (currentShowHistory) {
     while (lastChild) {
       ul.removeChild(lastChild);
