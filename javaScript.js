@@ -1,4 +1,5 @@
 import calculate from "./functions/calculate.js";
+import { render } from "./view/updateCalc.js";
 import addNumber from "./functions/addNumber.js";
 import remover from "./functions/remover.js";
 import functionShowAble from "./functions/addFunctionShowAble.js";
@@ -14,124 +15,76 @@ import showHistory from "./functions/showHistory.js";
 import showMemory from "./functions/showMemory.js";
 import memoryHandler from "./functions/memoryHandler.js";
 
-let numbers = [];
-let actions = [];
-let changedNumbers = true; //This is for determining whether user has intentionally pressed zero and wants to use it
-let done = false;
-let history = [];
-let memory = [];
-let currentShowHistory = true;
-
-console.log({ "done is": done });
-
-showHistory(history);
-
-const calculateIt = () => {
-  if (numbers.length < 1 || actions.length < 1) return;
-  calculate(
-    numbers,
-    actions,
-    changedNumbers,
-    done,
-    history,
-    currentShowHistory
-  );
-  done = true;
+let model = {
+  numbers: [20],
+  action: "",
+  results: [],
+  changedNumber: false,
+  done: true,
+  history: [],
+  memory: [],
+  currentShowHistory: true,
+  currentNumber: 0,
 };
 
-const addNumberIt = (Event) => {
-  console.log(done);
-  addNumber(Event, done, numbers, actions, changedNumbers);
-};
+render(model);
 
-const removerIt = () => {
-  remover();
-};
-
-const addFunctionShowAbleIt = (Event) => {
-  functionShowAble(Event, changedNumbers, numbers, actions, done);
-};
-
-const resetCIt = () => {
-  resetC(numbers, actions, done);
-};
-const resetCEIt = () => {
-  if (done) resetCIt();
-  resetCE();
-};
-
-const percentIt = () => {
-  if (actions.length < 1) {
-    resetCIt();
-    document.getElementById("holder").textContent = "0";
-    return;
-  }
-  percent(actions, numbers, changedNumbers);
-};
-
-const showHistoryIt = () => {
-  currentShowHistory = true;
-  showHistory(history);
-};
-
-const showMemoryIt = () => {
-  currentShowHistory = false;
-  showMemory(memory);
-};
-
-const memoryHandlerIt = (Event) => {
-  memoryHandler(Event, memory, changedNumbers, done);
-  if (!currentShowHistory) showMemoryIt();
-};
-
-(function addingEventListeners() {
-  document
-    .getElementsByClassName("equals")[0]
-    .addEventListener("click", calculateIt, false);
+const addingEventListeners = () => {
+  // document
+  //   .getElementsByClassName("equals")[0]
+  //   .addEventListener("click", calculate, false);
   const btnNumbers = document.querySelectorAll(".numbers");
-  btnNumbers.forEach(function setTheEventForEachNumberButton(button) {
-    button.addEventListener("click", addNumberIt, false);
+  btnNumbers.forEach((button) => {
+    button.addEventListener(
+      "click",
+      (Event) => {
+        addNumber(Event, model);
+        render(model);
+      },
+      false
+    );
   });
-  document.getElementById("delete").addEventListener("click", removerIt, false); // Event for the Delete button
-  const btnFunctions = document.querySelectorAll(".functionShowAble");
-  btnFunctions.forEach(function addEventListenerForFunctions(button) {
-    button.addEventListener("click", addFunctionShowAbleIt, false);
-  });
-  document
-    .getElementsByClassName("ce")[0]
-    .addEventListener("click", resetCEIt, false);
-  document
-    .getElementsByClassName("c")[0]
-    .addEventListener("click", resetCIt, false);
-  document
-    .getElementsByClassName("plus-minus")[0]
-    .addEventListener("click", togglePositivity, false);
-  document
-    .getElementsByClassName("one-divided-x")[0]
-    .addEventListener("click", oneDividedByNumber, false);
-  document
-    .getElementsByClassName("x-squared")[0]
-    .addEventListener("click", numberSquared, false);
-  document
-    .getElementsByClassName("cube-x")[0]
-    .addEventListener("click", numberCubed, false);
-  document
-    .getElementsByClassName("dot")[0]
-    .addEventListener("click", decimal, false);
-  document
-    .getElementsByClassName("squared-x")[0]
-    .addEventListener("click", root, false);
-  document
-    .getElementsByClassName("percent")[0]
-    .addEventListener("click", percentIt, false);
-  document
-    .getElementsByClassName("history-m")[0]
-    .addEventListener("click", showHistoryIt, false);
-  document
-    .getElementsByClassName("memory")[0]
-    .addEventListener("click", showMemoryIt, false);
-  const ms = document.querySelectorAll(".main-m");
-  ms.forEach((m) => {
-    m.addEventListener("click", memoryHandlerIt, false);
-  });
-})();
+  // document.getElementById("delete").addEventListener("click", removerIt, false); // Event for the Delete button
+  // const btnFunctions = document.querySelectorAll(".functionShowAble");
+  // btnFunctions.forEach(function addEventListenerForFunctions(button) {
+  //   button.addEventListener("click", addFunctionShowAbleIt, false);
+  // });
+  // document
+  //   .getElementsByClassName("ce")[0]
+  //   .addEventListener("click", resetCEIt, false);
+  // document
+  //   .getElementsByClassName("c")[0]
+  //   .addEventListener("click", resetCIt, false);
+  // document
+  //   .getElementsByClassName("plus-minus")[0]
+  //   .addEventListener("click", togglePositivity, false);
+  // document
+  //   .getElementsByClassName("one-divided-x")[0]
+  //   .addEventListener("click", oneDividedByNumber, false);
+  // document
+  //   .getElementsByClassName("x-squared")[0]
+  //   .addEventListener("click", numberSquared, false);
+  // document
+  //   .getElementsByClassName("cube-x")[0]
+  //   .addEventListener("click", numberCubed, false);
+  // document
+  //   .getElementsByClassName("dot")[0]
+  //   .addEventListener("click", decimal, false);
+  // document
+  //   .getElementsByClassName("squared-x")[0]
+  //   .addEventListener("click", root, false);
+  // document
+  //   .getElementsByClassName("percent")[0]
+  //   .addEventListener("click", percentIt, false);
+  // document
+  //   .getElementsByClassName("history-m")[0]
+  //   .addEventListener("click", showHistoryIt, false);
+  // document
+  //   .getElementsByClassName("memory")[0]
+  //   .addEventListener("click", showMemoryIt, false);
+  // const ms = document.querySelectorAll(".main-m");
+  // ms.forEach((m) => {
+  //   m.addEventListener("click", memoryHandlerIt, false);
+  // });
+};
+addingEventListeners();
