@@ -164,7 +164,7 @@ body {
 /* The part for M's has different grid behavior and will need a different grid */
 .m {
   display: grid;
-  grid-template-columns: repeat(6, minmax(30px, 80px));
+  grid-template-columns: repeat(5, minmax(30px, 80px));
   grid-template-rows: 6vh;
 }
 .main-m {
@@ -302,7 +302,7 @@ body {
   }
   .m {
     display: grid;
-    grid-template-columns: repeat(6, minmax(30px, 80px));
+    grid-template-columns: repeat(5, minmax(30px, 80px));
     grid-template-rows: 6vh;
   }
   .main-m {

@@ -1,90 +1,48 @@
+import render from "./view/render.js";
 import calculate from "./functions/calculate.js";
-import { render } from "./view/updateCalc.js";
+import removeNum from "./functions/removeNum.js";
 import addNumber from "./functions/addNumber.js";
-import remover from "./functions/remover.js";
-import functionShowAble from "./functions/addFunctionShowAble.js";
-import { resetCE, resetC } from "./functions/resets.js";
-import togglePositivity from "./functions/togglePositivity.js";
-import oneDividedByNumber from "./functions/oneDividedByNumber.js";
-import numberSquared from "./functions/numberSquared.js";
-import numberCubed from "./functions/numberCubed.js";
-import root from "./functions/root.js";
-import decimal from "./functions/decimal.js";
-import percent from "./functions/percent.js";
-import showHistory from "./functions/showHistory.js";
-import showMemory from "./functions/showMemory.js";
-import memoryHandler from "./functions/memoryHandler.js";
 
-let model = {
-  numbers: [20],
-  action: "",
-  results: [],
-  changedNumber: false,
+const model = {
+  inCalc: {
+    first: 5,
+    second: 6,
+    current: 11,
+    action: "+",
+    changedNum: false,
+  },
   done: true,
-  history: [],
-  memory: [],
-  currentShowHistory: true,
-  currentNumber: 0,
+  inHistory: [{ first: 0, second: 0, result: 0, action: "+" }],
+  inMemory: [{ first: 1, second: 0, result: 0, action: "+" }],
+  currentTab: "history",
+  isDecimal: false,
 };
 
 render(model);
 
-const addingEventListeners = () => {
-  // document
-  //   .getElementsByClassName("equals")[0]
-  //   .addEventListener("click", calculate, false);
-  const btnNumbers = document.querySelectorAll(".numbers");
-  btnNumbers.forEach((button) => {
-    button.addEventListener(
-      "click",
-      (Event) => {
-        addNumber(Event, model);
-        render(model);
-      },
-      false
-    );
+const createEvents = () => {
+  const numbers = document.querySelectorAll(".numbers");
+  numbers.forEach((num) => {
+    num.addEventListener("click", (Event) => {
+      addNumber(Event, model);
+      render(model);
+    });
   });
-  // document.getElementById("delete").addEventListener("click", removerIt, false); // Event for the Delete button
-  // const btnFunctions = document.querySelectorAll(".functionShowAble");
-  // btnFunctions.forEach(function addEventListenerForFunctions(button) {
-  //   button.addEventListener("click", addFunctionShowAbleIt, false);
-  // });
-  // document
-  //   .getElementsByClassName("ce")[0]
-  //   .addEventListener("click", resetCEIt, false);
-  // document
-  //   .getElementsByClassName("c")[0]
-  //   .addEventListener("click", resetCIt, false);
-  // document
-  //   .getElementsByClassName("plus-minus")[0]
-  //   .addEventListener("click", togglePositivity, false);
-  // document
-  //   .getElementsByClassName("one-divided-x")[0]
-  //   .addEventListener("click", oneDividedByNumber, false);
-  // document
-  //   .getElementsByClassName("x-squared")[0]
-  //   .addEventListener("click", numberSquared, false);
-  // document
-  //   .getElementsByClassName("cube-x")[0]
-  //   .addEventListener("click", numberCubed, false);
-  // document
-  //   .getElementsByClassName("dot")[0]
-  //   .addEventListener("click", decimal, false);
-  // document
-  //   .getElementsByClassName("squared-x")[0]
-  //   .addEventListener("click", root, false);
-  // document
-  //   .getElementsByClassName("percent")[0]
-  //   .addEventListener("click", percentIt, false);
-  // document
-  //   .getElementsByClassName("history-m")[0]
-  //   .addEventListener("click", showHistoryIt, false);
-  // document
-  //   .getElementsByClassName("memory")[0]
-  //   .addEventListener("click", showMemoryIt, false);
-  // const ms = document.querySelectorAll(".main-m");
-  // ms.forEach((m) => {
-  //   m.addEventListener("click", memoryHandlerIt, false);
-  // });
+  document.querySelector(".dot").addEventListener("click", () => {
+    document.querySelector("#numbers-results").textContent += ".";
+    model.isDecimal = true;
+  });
+
+  document.querySelector("#delete").addEventListener("click", () => {
+    removeNum(model);
+    render(model);
+  });
+
+  document.querySelectorAll(".functionShowAble").forEach((func) => {
+    func.addEventListener("click", (Event) => {
+      calculate(Event, model);
+      render(model);
+    });
+  });
 };
-addingEventListeners();
+createEvents();

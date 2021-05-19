@@ -1,35 +1,38 @@
-const calculate = (model) => {
-  if (model.numbers.length < 2) return;
-  while (model.numbers.length > 1) {
-    switch (model.action) {
+const calculate = (Event, model) => {
+  const func = Event.target.textContent.trim();
+  const { inCalc } = model;
+
+  const calc = (state) => {
+    switch (state) {
       case "+":
-        model.numbers[0] = model.numbers[0] + model.numbers[1];
-        model.currentNumber = model.numbers[0];
-        model.numbers.pop();
+        inCalc.first += inCalc.current;
         break;
       case "-":
-        model.numbers[0] = model.numbers[0] - model.numbers[1];
-        model.currentNumber = model.numbers[0];
-        model.numbers.pop();
+        inCalc.first -= inCalc.current;
         break;
       case "×":
-        model.numbers[0] = model.numbers[0] * model.numbers[1];
-        model.currentNumber = model.numbers[0];
-        model.numbers.pop();
+        inCalc.first = inCalc.first * inCalc.current;
         break;
       case "÷":
-        model.numbers[0] = model.numbers[0] / model.numbers[1];
-        // eslint-disable-next-line no-unused-vars
-        model.currentNumber = model.numbers[0];
-        model.numbers.pop();
-        break;
-      default:
-        document.getElementById("numbers-results").textContent =
-          "Please stop trying to be funny";
+        inCalc.first = inCalc.first / inCalc.current;
         break;
     }
-    model.action = "";
-    model.done = true;
+  };
+
+  if (!inCalc.first) {
+    inCalc.action = func;
+    inCalc.first = inCalc.current;
+    inCalc.current = 0;
+    inCalc.changedNum = false;
+  } else if (inCalc.first && inCalc.action !== func) {
+    calc(inCalc.action);
+    inCalc.action = func;
+    inCalc.current = inCalc.first;
+    inCalc.changedNum = false;
+  } else if (inCalc.first && inCalc.action === func && inCalc.changedNum) {
+    calc(func);
+    inCalc.current = inCalc.first;
+    inCalc.changedNum = false;
   }
 };
 
